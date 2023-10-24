@@ -4,14 +4,20 @@ import styled from 'styled-components'
 
 const Navigation = () => {
   return (
-    <div>
+    <StyledNav>
       <StyledNavLink to='/women'>Woman</StyledNavLink>
       <StyledNavLink to='/men'>Man</StyledNavLink>
       <StyledNavLink to='/jewelry'>Jewelry</StyledNavLink>
       <StyledNavLink to='/electronics'>Electronics</StyledNavLink>
-    </div>
+    </StyledNav>
   )
 }
+
+const StyledNav = styled.nav `
+    height: 5vh;
+    display: flex;
+    align-items: center;
+`
 
 const StyledNavLink = styled(NavLink) `
     all: unset;
