@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 import Header from '../Header'
-import { useState, useEffect } from 'react'
-import { BsStarFill, BsStarHalf } from "react-icons/bs";
+import ProductHorizontalScroll from '../ProductHorizontalScroll'
+import { useState, useEffect } from 'react';
 
 const StartPage = () => {
 
@@ -25,44 +25,51 @@ const StartPage = () => {
 
     type Product = { id: number, title: string, price: number, description: string, category: string, image: string, rating: { rate: number, count: number } }
 
-    const generateStars = (rating: number) => {
-        let starsArr = [];
-        let i;
-        for (i = 1; i < rating; i++) {
-            starsArr.push(i);
-        }
-        console.log(`rating: ${rating} i: ${i - 0.5}`)
-        if (rating > i - 0.5) {
-            return <>
-                {starsArr.map((star) => {
-                    return <BsStarFill key={star}/>
-                })}
-                <BsStarHalf />
-            </>
-        } else {
-            return starsArr.map((star) => {
-                return <BsStarFill key={star}/>
-            })
-        }
-    }
-
     return (
         <StyledMain>
             <Header />
             <h3 className='h3'>Trending now</h3>
-            <div className='trending-section'>
+            <div className='product-section'>
                 {products.map((product: Product) => {
                     return product.rating.rate > 3.8
-                        ? <div key={product.id} className='product-div'>
-                            <img className='product-img' src={product.image} alt='product' />
-                            <p>{product.title}</p>
-                            <div className='price-star-wrapper'>
-                                <p>{product.price}:-</p>
-                                <div className='stars-wrapper'>
-                                    {generateStars(product.rating.rate)}
-                                </div>
-                            </div>
-                        </div>
+                        ? <ProductHorizontalScroll 
+                            product={product}/>
+                        : null
+                })}
+            </div>
+            <h3 className='h3'>Men's clothing</h3>
+            <div className='product-section'>
+                {products.map((product: Product) => {
+                    return product.category === "men's clothing"
+                        ? <ProductHorizontalScroll 
+                            product={product}/>
+                        : null
+                })}
+            </div>
+            <h3 className='h3'>Women's clothing</h3>
+            <div className='product-section'>
+                {products.map((product: Product) => {
+                    return product.category === "women's clothing"
+                        ? <ProductHorizontalScroll 
+                            product={product}/>
+                        : null
+                })}
+            </div>
+            <h3 className='h3'>Jewelry</h3>
+            <div className='product-section'>
+                {products.map((product: Product) => {
+                    return product.category === "jewelery"
+                        ? <ProductHorizontalScroll 
+                            product={product}/>
+                        : null
+                })}
+            </div>
+            <h3 className='h3'>Electronics</h3>
+            <div className='product-section'>
+                {products.map((product: Product) => {
+                    return product.category === "electronics"
+                        ? <ProductHorizontalScroll 
+                            product={product}/>
                         : null
                 })}
             </div>
@@ -71,17 +78,16 @@ const StartPage = () => {
 }
 
 const StyledMain = styled.main`
-    .trending-section {
+    .product-section {
         display: flex;
-        gap: 3vw;
         overflow-x: scroll;
-        margin-left: 3vw;
     }
 
     h3 {
         font-family: 'Kaisei Tokumin';
         font-size: 30px;
         margin-left: 5vw;
+        margin-bottom: 10px;
     }
     .product-img {
         width: 200px;
