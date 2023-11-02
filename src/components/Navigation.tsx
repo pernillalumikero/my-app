@@ -1,9 +1,15 @@
 import React from 'react'
+import {useState} from 'react'
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import { PiBagBold } from "react-icons/pi";
+import Cart from './Cart';
 
 const Navigation = () => {
+
+  const [isCartOpen, setIsCartOpen] = useState(false);
+  const [cartItems, setCartItems] = useState([]);
+
   return (
     <StyledWrapper>
       <StyledNav>
@@ -13,10 +19,14 @@ const Navigation = () => {
         <StyledNavLink to='/jewelry'>Jewelry</StyledNavLink>
         <StyledNavLink to='/electronics'>Electronics</StyledNavLink>
       </StyledNav>
-      <StyledButton><PiBagBold size={26} /></StyledButton>
+      <StyledButton onClick={() => setIsCartOpen(!isCartOpen)}><StyledPiBagBold size={26} /> {isCartOpen ? <Cart /> : null}</StyledButton>
     </StyledWrapper>
   )
 }
+
+const StyledPiBagBold = styled(PiBagBold) `
+  margin-right: 1.5vw; 
+`
 
 const StyledWrapper = styled.div`
     display: flex;
@@ -45,8 +55,11 @@ const StyledNavLink = styled(NavLink)`
 
 const StyledButton = styled.button`
     all: unset;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
     padding-top: 0.5vh;
-    margin-right: 1.5vw;
+    z-index: 2;
 `
 
 export default Navigation

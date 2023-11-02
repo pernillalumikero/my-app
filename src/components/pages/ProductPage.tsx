@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { useParams } from 'react-router-dom';
 import Navigation from '../Navigation';
 import { BsStarFill, BsStarHalf } from "react-icons/bs";
+import { MdArrowBackIosNew } from "react-icons/md";
 
 
 const ProductPage = () => {
@@ -24,7 +25,7 @@ const ProductPage = () => {
     getProductById()
   }, [])
 
-const generateStars = (rating: number) => {
+  const generateStars = (rating: number) => {
     let starsArr = [];
     let i;
     for (i = 1; i < rating; i++) {
@@ -49,15 +50,20 @@ const generateStars = (rating: number) => {
     <StyledMain>
       <Navigation />
       <div className='wrapper'>
+        <div className='back'>
+          <MdArrowBackIosNew size={35} onClick={()=> window.history.back()}/>
+        </div>
         <div className='image-div'>
-          <img src={product.image} alt='product'/>
+          <img src={product.image} alt='product' />
         </div>
         <div className='content-div'>
           <h2>{product.title}</h2>
-          <p>Customer rating: {generateStars(product.rating.rate)} ({product.rating.count})</p>
+          <p className='rating'>Customer rating: &nbsp; {generateStars(product.rating.rate)} &nbsp;({product.rating.count})</p>
           <p>{product.description}</p>
-          <p>Price: {product.price}:-</p>
-          <button>Buy</button>
+          <p><b>Price:</b> {product.price}:-</p>
+          <div className='btn-div'>
+            <button>Buy</button>
+          </div>
         </div>
       </div>
     </StyledMain>
@@ -77,6 +83,31 @@ const StyledMain = styled.main`
     .content-div {
       width: 25vw;
        margin: 10vh 0;
+    }
+
+    .rating, .back {
+      display: flex;
+      align-items: center;
+    }
+
+    .btn-div {
+      text-align: left;
+      margin-left: 2vw;
+      margin-top: 5vh;
+      button {
+        all: unset;  
+        background-color: #38312b;
+        color: white;
+        padding: 1vh;
+        font-family: 'Kulim Park';
+        font-weight: 600;
+        font-size: 18px;
+
+        &:hover {
+          font-size: 20px;
+    }
+      }
+      
     }
 
     img {

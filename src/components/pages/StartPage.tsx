@@ -77,6 +77,7 @@ const StartPage = () => {
                         : null
                 })}
             </div>
+            
         </StyledMain>
     )
 }
