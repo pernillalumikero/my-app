@@ -1,9 +1,21 @@
 import React from 'react'
 import { BsStarFill, BsStarHalf } from "react-icons/bs";
 import styled from 'styled-components';
+import { Link } from 'react-router-dom'
 
 interface ProductHorizontalScrollProps {
-  product: { id: number, title: string, price: number, description: string, category: string, image: string, rating: { rate: number, count: number } };
+  product: {
+    id: number,
+    title: string,
+    price: number,
+    description: string,
+    category: string,
+    image: string,
+    rating: {
+      rate: number,
+      count: number
+    }
+  };
 }
 
 const ProductHorizontalScroll: React.FC<ProductHorizontalScrollProps> = ({ product }) => {
@@ -41,6 +53,10 @@ const ProductHorizontalScroll: React.FC<ProductHorizontalScrollProps> = ({ produ
           {generateStars(product.rating.rate)}
         </div>
       </div>
+      <div className='btn-wrapper'>
+        <button className='btn'>Buy</button>
+        <StyledLink to={'product/' + product.id} className='btn'>Read more</StyledLink>
+      </div>
     </ProductDiv>
   )
 }
@@ -65,6 +81,32 @@ const ProductDiv = styled.div`
     -webkit-box-shadow: 0px 0px 18px 2px rgba(0,0,0,0.75);
     -moz-box-shadow: 0px 0px 18px 2px rgba(0,0,0,0.75);
   }
+  .btn-wrapper {
+    display: flex;
+    justify-content: space-between;
+  }
+  button {
+    all: unset
+  }
+  .btn {
+    cursor: pointer;
+    margin-bottom: 2vh;
+    background-color: #38312b;
+    color: white;
+    padding: 1vh;
+    font-family: 'Kulim Park';
+    font-weight: 600;
+    font-size: 16px;
+    border: 3px solid white;
+  }
+  .btn:hover {
+        border: 3px solid #38312b;
+        font-size: 17px;
+    }
+`
+
+const StyledLink = styled(Link)`
+  all: unset;
 `
 
 export default ProductHorizontalScroll

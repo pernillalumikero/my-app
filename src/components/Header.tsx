@@ -11,7 +11,7 @@ import { MdOutlineArrowForwardIos } from 'react-icons/md';
 const Header = () => {
 
     const [numberOfSlide, setNumberOfSlide] = useState(0)
-    const [carouselImg, setCarouselImg] = useState(womanfashion)
+    const [carouselimg, setCarouselimg] = useState(womanfashion)
 
     let carouselContent: { title: string, img: string, link: string }[] = [{
         title: `Women's clothing`,
@@ -44,7 +44,7 @@ const Header = () => {
         else {
             setNumberOfSlide(newSlide)
         }
-        setCarouselImg(carouselContent[newSlide].img)
+        setCarouselimg(carouselContent[newSlide].img)
     }
 
     useEffect(() => {
@@ -65,7 +65,7 @@ const Header = () => {
                 </div>
                 <StyledLink to={carouselContent[numberOfSlide].link}>Shop now!</StyledLink>
             </div>
-            <StyledImgDiv className='img-div' carouselImg={carouselImg}>
+            <StyledImgDiv className='img-div' carouselimg={carouselimg}>
                 <button className='arrowBtn' onClick={() => handleClick()}><MdOutlineArrowForwardIos /></button>
             </StyledImgDiv>
         </StyledHeader>
@@ -73,11 +73,11 @@ const Header = () => {
 }
 
 
-const StyledImgDiv = styled.div<{ carouselImg: string }>`
+const StyledImgDiv = styled.div<{ carouselimg: string }>`
         width: 65vw;
         height: 60vh;
         background-color: #3a5785;
-        background-image: url(${props => props.carouselImg});
+        background-image: url(${props => props.carouselimg});
         background-size: cover;
         background-position: 0 40%;
         position: absolute;
@@ -103,7 +103,9 @@ const StyledLink = styled(Link) `
         margin-left: 5vw;
 
     &:hover {
-        background-color: grey;
+        font-size: 24px;
+        margin-left: 4.8vw;
+        margin-top: 1.8vh;
     }
 `
 

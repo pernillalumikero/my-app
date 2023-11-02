@@ -11,6 +11,7 @@ import WomenClothes from './components/pages/WomenClothes';
 import MenClothes from './components/pages/MenClothes';
 import Jewelry from './components/pages/Jewelry';
 import Electronics from './components/pages/Electronics';
+import ProductPage from './components/pages/ProductPage';
 
 const router = createBrowserRouter([
   {
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
       {
         path:"/electronics",
         element: <Electronics />
+      },
+      {
+        path: "/product/:id",
+        element: <ProductPage />
       }
     ]
   },

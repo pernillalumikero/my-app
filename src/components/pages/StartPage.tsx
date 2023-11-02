@@ -32,8 +32,9 @@ const StartPage = () => {
             <div className='product-section'>
                 {products.map((product: Product) => {
                     return product.rating.rate > 3.8
-                        ? <ProductHorizontalScroll 
-                            product={product}/>
+                        ? <ProductHorizontalScroll
+                            key={product.id}
+                            product={product} />
                         : null
                 })}
             </div>
@@ -41,8 +42,9 @@ const StartPage = () => {
             <div className='product-section'>
                 {products.map((product: Product) => {
                     return product.category === "men's clothing"
-                        ? <ProductHorizontalScroll 
-                            product={product}/>
+                        ? <ProductHorizontalScroll
+                            key={product.id}
+                            product={product} />
                         : null
                 })}
             </div>
@@ -50,8 +52,9 @@ const StartPage = () => {
             <div className='product-section'>
                 {products.map((product: Product) => {
                     return product.category === "women's clothing"
-                        ? <ProductHorizontalScroll 
-                            product={product}/>
+                        ? <ProductHorizontalScroll
+                            key={product.id}
+                            product={product} />
                         : null
                 })}
             </div>
@@ -59,8 +62,9 @@ const StartPage = () => {
             <div className='product-section'>
                 {products.map((product: Product) => {
                     return product.category === "jewelery"
-                        ? <ProductHorizontalScroll 
-                            product={product}/>
+                        ? <ProductHorizontalScroll
+                            key={product.id}
+                            product={product} />
                         : null
                 })}
             </div>
@@ -68,8 +72,8 @@ const StartPage = () => {
             <div className='product-section'>
                 {products.map((product: Product) => {
                     return product.category === "electronics"
-                        ? <ProductHorizontalScroll 
-                            product={product}/>
+                        ? <ProductHorizontalScroll
+                            product={product} />
                         : null
                 })}
             </div>
