@@ -9,6 +9,7 @@ import { MdArrowBackIosNew } from "react-icons/md";
 const ProductPage = () => {
 
   let { id } = useParams();
+  
   const [product, setProduct] = useState({ id: 0, title: '', price: 0, description: '', category: '', image: '', rating: { rate: 0, count: 0 } })
 
   const getProductById = async () => {

@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import Header from '../Header'
+import Navigation from '../Navigation'
 import ProductHorizontalScroll from '../ProductHorizontalScroll'
 import { useState, useEffect } from 'react';
 
@@ -27,6 +28,7 @@ const StartPage = () => {
 
     return (
         <StyledMain>
+            <Navigation />
             <Header />
             <h3 className='h3'>Trending now</h3>
             <div className='product-section'>

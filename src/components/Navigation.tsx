@@ -8,7 +8,6 @@ import Cart from './Cart';
 const Navigation = () => {
 
   const [isCartOpen, setIsCartOpen] = useState(false);
-  const [cartItems, setCartItems] = useState([]);
 
   return (
     <StyledWrapper>
@@ -25,12 +24,15 @@ const Navigation = () => {
 }
 
 const StyledPiBagBold = styled(PiBagBold) `
-  margin-right: 1.5vw; 
+  margin-right: 1.5vw;
+  margin-top: 0.5vh;
+   
 `
 
 const StyledWrapper = styled.div`
     display: flex;
     justify-content: space-between;
+    background-color: #F5EBE0;
 `
 
 const StyledNav = styled.nav`

@@ -58,7 +58,6 @@ const Header = () => {
 
     return (
         <StyledHeader>
-            <Navigation />
             <div className='wrapper'>
                 <div className='title'>
                     <h1>{carouselContent[numberOfSlide].title}</h1>
