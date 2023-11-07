@@ -1,7 +1,10 @@
 import React from 'react'
 import { BsStarFill, BsStarHalf } from "react-icons/bs";
 import styled from 'styled-components';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { addToCart, getCartItemsSelector } from './cartitems.slice';
+import { useAppDispatch } from './store.hooks';
 
 interface ProductHorizontalScrollProps {
   product: {
@@ -19,6 +22,8 @@ interface ProductHorizontalScrollProps {
 }
 
 const ProductHorizontalScroll: React.FC<ProductHorizontalScrollProps> = ({ product }) => {
+
+  const cartitems = useSelector(getCartItemsSelector)
 
   const generateStars = (rating: number) => {
     let starsArr = [];
@@ -41,6 +46,12 @@ const ProductHorizontalScroll: React.FC<ProductHorizontalScrollProps> = ({ produ
     }
   }
 
+  const dispatch = useAppDispatch()
+
+  const addItem = (item: typeof product) => {
+    dispatch(addToCart(item))
+  }
+
   return (
     <ProductDiv key={product.id} className='product-div'>
       <img className='product-img' src={product.image} alt='product' />
@@ -54,7 +65,7 @@ const ProductHorizontalScroll: React.FC<ProductHorizontalScrollProps> = ({ produ
         </div>
       </div>
       <div className='btn-wrapper'>
-        <button className='btn'>Buy</button>
+        <button className='btn' onClick={() => addItem(product)}>Buy</button>
         <StyledLink to={'product/' + product.id} className='btn'>Read more</StyledLink>
       </div>
     </ProductDiv>
