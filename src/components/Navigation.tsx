@@ -1,13 +1,25 @@
 import React from 'react'
-import {useState} from 'react'
+import { useState } from 'react'
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import { PiBagBold } from "react-icons/pi";
 import Cart from './Cart';
+import { useSelector } from 'react-redux'
+import { getCartItemsSelector } from './cartitems.slice'
 
 const Navigation = () => {
 
+  const cartitems = useSelector(getCartItemsSelector)
   const [isCartOpen, setIsCartOpen] = useState(false);
+
+  let quantity = 0;
+
+  const getQuantity = () => {
+    cartitems.map(item => {
+      quantity = quantity + item.quantity
+    })
+    return quantity
+  }
 
   return (
     <StyledWrapper>
@@ -18,15 +30,55 @@ const Navigation = () => {
         <StyledNavLink to='/jewelry'>Jewelry</StyledNavLink>
         <StyledNavLink to='/electronics'>Electronics</StyledNavLink>
       </StyledNav>
-      <StyledButton onClick={() => setIsCartOpen(!isCartOpen)}><StyledPiBagBold size={26} /> {isCartOpen ? <Cart /> : null}</StyledButton>
+      <StyledCartWrapper>
+        {isCartOpen
+          ? <Cart
+            setIsCartOpen={setIsCartOpen} />
+          : <StyledButton onMouseEnter={() => setIsCartOpen(true)}>
+            <StyledPiBagBold size={30} />
+            {cartitems.length === 0
+              ? null
+              : <div className='quantity-div'>
+                {getQuantity()}
+              </div>}
+
+          </StyledButton>}
+      </StyledCartWrapper>
     </StyledWrapper>
   )
 }
 
-const StyledPiBagBold = styled(PiBagBold) `
+const StyledCartWrapper = styled.div`
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  color: #2B3038;
+
+  .quantity {
+    position: absolute;
+    right: 2.3vw;
+    font-size: 12px;
+    font-weight: bold;
+  }
+
+  .quantity-div {
+    height: 18px;
+    width: 18px;
+    border-radius: 50%;
+    background-color: #2B3038;
+    position: absolute;
+    right: 1vw;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
+    padding-top: 1px;
+  }
+`
+
+const StyledPiBagBold = styled(PiBagBold)`
   margin-right: 1.5vw;
   margin-top: 0.5vh;
-   
 `
 
 const StyledWrapper = styled.div`

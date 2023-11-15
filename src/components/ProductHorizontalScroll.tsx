@@ -2,8 +2,7 @@ import React from 'react'
 import { BsStarFill, BsStarHalf } from "react-icons/bs";
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { addToCart, getCartItemsSelector } from './cartitems.slice';
+import { addToCart } from './cartitems.slice';
 import { useAppDispatch } from './store.hooks';
 
 interface ProductHorizontalScrollProps {
@@ -18,12 +17,11 @@ interface ProductHorizontalScrollProps {
       rate: number,
       count: number
     }
+    quantity: number
   };
 }
 
 const ProductHorizontalScroll: React.FC<ProductHorizontalScrollProps> = ({ product }) => {
-
-  const cartitems = useSelector(getCartItemsSelector)
 
   const generateStars = (rating: number) => {
     let starsArr = [];
@@ -48,8 +46,15 @@ const ProductHorizontalScroll: React.FC<ProductHorizontalScrollProps> = ({ produ
 
   const dispatch = useAppDispatch()
 
-  const addItem = (item: typeof product) => {
-    dispatch(addToCart(item))
+  const addItem = (id: number, title: string, price: number, image: string, quantity: number) => {
+    let newItem = {
+      id: id,
+      title: title,
+      price: price,
+      image: image,
+      quantity: quantity
+    }
+    dispatch(addToCart(newItem))
   }
 
   return (
@@ -65,7 +70,7 @@ const ProductHorizontalScroll: React.FC<ProductHorizontalScrollProps> = ({ produ
         </div>
       </div>
       <div className='btn-wrapper'>
-        <button className='btn' onClick={() => addItem(product)}>Buy</button>
+        <button className='btn' onClick={() => addItem(product.id, product.title, product.price, product.image, 1)}>Buy</button>
         <StyledLink to={'product/' + product.id} className='btn'>Read more</StyledLink>
       </div>
     </ProductDiv>

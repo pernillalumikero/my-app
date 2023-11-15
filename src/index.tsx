@@ -12,6 +12,7 @@ import MenClothes from './components/pages/MenClothes';
 import Jewelry from './components/pages/Jewelry';
 import Electronics from './components/pages/Electronics';
 import ProductPage from './components/pages/ProductPage';
+import Checkout from './components/pages/Checkout';
 
 const router = createBrowserRouter([
   {
@@ -36,12 +37,16 @@ const router = createBrowserRouter([
         element: <Jewelry />
       },
       {
-        path:"/electronics",
+        path: "/electronics",
         element: <Electronics />
       },
       {
         path: "/product/:id",
         element: <ProductPage />
+      },
+      {
+        path: "/checkout",
+        element: <Checkout />
       }
     ]
   },
