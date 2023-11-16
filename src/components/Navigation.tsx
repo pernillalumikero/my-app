@@ -30,6 +30,7 @@ const Navigation = () => {
         <StyledNavLink to='/jewelry'>Jewelry</StyledNavLink>
         <StyledNavLink to='/electronics'>Electronics</StyledNavLink>
       </StyledNav>
+      
       <StyledCartWrapper>
         {isCartOpen
           ? <Cart

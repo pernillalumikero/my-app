@@ -24,7 +24,19 @@ const StartPage = () => {
         fetchProducts();
     }, [])
 
-    type Product = { id: number, title: string, price: number, description: string, category: string, image: string, rating: { rate: number, count: number }, quantity: number }
+    type Product = {
+        id: number,
+        title: string,
+        price: number,
+        description: string,
+        category: string,
+        image: string,
+        rating: {
+            rate: number,
+            count: number
+        },
+        quantity: number
+    }
 
     return (
         <StyledMain>
@@ -40,20 +52,20 @@ const StartPage = () => {
                         : null
                 })}
             </div>
-            <h3 className='h3'>Men's clothing</h3>
+            <h3 className='h3'>Women's clothing</h3>
             <div className='product-section'>
                 {products.map((product: Product) => {
-                    return product.category === "men's clothing"
+                    return product.category === "women's clothing"
                         ? <ProductHorizontalScroll
                             key={product.id}
                             product={product} />
                         : null
                 })}
             </div>
-            <h3 className='h3'>Women's clothing</h3>
+            <h3 className='h3'>Men's clothing</h3>
             <div className='product-section'>
                 {products.map((product: Product) => {
-                    return product.category === "women's clothing"
+                    return product.category === "men's clothing"
                         ? <ProductHorizontalScroll
                             key={product.id}
                             product={product} />
@@ -79,7 +91,7 @@ const StartPage = () => {
                         : null
                 })}
             </div>
-            
+
         </StyledMain>
     )
 }

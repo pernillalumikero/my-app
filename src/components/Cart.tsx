@@ -29,7 +29,7 @@ const Cart: React.FC<CartProps> = ({ setIsCartOpen }) => {
     const cartTotal = () => {
         let sum = 0;
         cartitems.map((item) => {
-            return sum = sum + item.price*item.quantity;
+            return sum = sum + item.price * item.quantity;
         })
         setCartSum(sum)
         return cartSum.toString
@@ -72,13 +72,19 @@ const Cart: React.FC<CartProps> = ({ setIsCartOpen }) => {
                                 <h4>{item.title}</h4>
                                 <p>{item.price}:-</p>
                             </div>
-                            <div>
+                            <div className='quantity-trash-wrapper'>
                                 <div className='quantity-wrapper'>
-                                    <button onClick={() => DecreaseQuantity(item)}className='arrow-btn'><FaAngleLeft /></button>
+                                    <button onClick={() => DecreaseQuantity(item)} className='arrow-btn'>
+                                        <FaAngleLeft />
+                                    </button>
                                     <p>{item.quantity}</p>
-                                    <button onClick={() => IncreaseQuantity(item)} className='arrow-btn'><FaAngleRight /></button>
+                                    <button onClick={() => IncreaseQuantity(item)} className='arrow-btn'>
+                                        <FaAngleRight />
+                                    </button>
                                 </div>
-                                <button className='icon' onClick={() => RemoveItem(item)}><FaTrashAlt /></button>
+                                <button className='icon' onClick={() => RemoveItem(item)}>
+                                    <FaTrashAlt />
+                                </button>
                             </div>
                         </div>
                     })}
@@ -133,6 +139,10 @@ const StyledCart = styled.div`
         display: flex;
         align-items: center;
         gap: 1vw;
+    }
+
+    .quantity-trash-wrapper {
+        text-align: center;
     }
 
     .arrow-btn {
