@@ -22,7 +22,7 @@ const StyledLink = styled(Link)`
     align-items: center;
     justify-content: center;
     width: 30vw;
-    font-family: 'Leckerli One', cursive;
+    font-family: 'Kaisei Tokumin';
 
   .logo {
     width: 32px;

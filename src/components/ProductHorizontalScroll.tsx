@@ -71,7 +71,7 @@ const ProductHorizontalScroll: React.FC<ProductHorizontalScrollProps> = ({ produ
       </div>
       <div className='btn-wrapper'>
         <button className='btn' onClick={() => addItem(product.id, product.title, product.price, product.image, 1)}>Buy</button>
-        <StyledLink to={'product/' + product.id} className='btn'>Read more</StyledLink>
+        <StyledLink to={'/product/' + product.id} className='btn'>Read more</StyledLink>
       </div>
     </ProductDiv>
   )
@@ -91,6 +91,20 @@ const ProductDiv = styled.div`
   .short-title {
     margin-bottom: 34px;
   }
+
+  .product-img {
+        width: 200px;
+        height: 200px;
+        object-fit: contain;
+    }
+    .price-star-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .stars-wrapper {
+        display: flex;
+    }
 
   &:hover {
     box-shadow: 0px 0px 18px 2px rgba(0,0,0,0.75);

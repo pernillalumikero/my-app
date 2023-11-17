@@ -5,7 +5,6 @@ import womanfashion from '../resources/pexels-evg-kowalievska-1126993.jpg'
 import menfashion from '../resources/pexels-abraham-george-creations-14412949.jpg'
 import jewelry from '../resources/pexels-the-glorious-studio-5442446.jpg'
 import electronics from '../resources/pexels-emmanuel-jason-eliphalet-9956761.jpg'
-import Navigation from './Navigation'
 import { MdOutlineArrowForwardIos } from 'react-icons/md';
 
 const Header = () => {
@@ -110,7 +109,7 @@ const StyledLink = styled(Link) `
 
 const StyledHeader = styled.header`
     background-color: #F5EBE0;
-    height: 75vh;
+    height: 65vh;
 
     .wrapper {
         position: absolute;

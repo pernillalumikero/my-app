@@ -108,19 +108,7 @@ const StyledMain = styled.main`
         margin-left: 5vw;
         margin-bottom: 10px;
     }
-    .product-img {
-        width: 200px;
-        height: 200px;
-        object-fit: contain;
-    }
-    .price-star-wrapper {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-    }
-    .stars-wrapper {
-        display: flex;
-    }
+
 `
 
 export default StartPage

@@ -1,10 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
+import Navigation from '../Navigation'
 
 const Electronics = () => {
     return (
         <StyledMain>
-            <h1>Electronics</h1>
+            <Navigation />
         </StyledMain>
     )
 }
