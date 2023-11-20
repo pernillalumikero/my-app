@@ -32,13 +32,13 @@ const WomenClothes = () => {
                     likes={87}
                     days={3}
                     username='sweetellie'
-                    comment='Keeping warm in my new jacket' />
+                    comment='Keeping warm in my new coat' />
                 <InspirationPicture
                     pic={pic3}
                     likes={26}
                     days={5}
                     username='brandi-jc'
-                    comment='On the road, looking cool...' />
+                    comment='Roadtrip outfit' />
             </div>
         </StyledMain>
     )

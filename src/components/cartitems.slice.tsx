@@ -16,7 +16,13 @@ const cartItemsSlice = createSlice({
     initialState,
     reducers: {
         addToCart: (state, action: PayloadAction<Item>) => {
-            return [action.payload, ...state]
+            let itemToIncrease = state.filter(item => action.payload.id === item.id)
+            if (itemToIncrease.length === 0 ) {
+                return [action.payload, ...state]
+            } else {
+                itemToIncrease[0].quantity++
+                return state
+            }
         },
         removeFromCart: (state, action: PayloadAction<Item>) => {
             return state.filter(item => action.payload.id !== item.id)

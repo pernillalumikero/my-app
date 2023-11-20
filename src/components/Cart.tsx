@@ -66,37 +66,41 @@ const Cart: React.FC<CartProps> = ({ setIsCartOpen }) => {
                 {cartitems.length === 0
                     ? <p>Your cart is empthy</p>
                     : cartitems.map(item => {
-                        return <div className='wrapper'>
-                            <img className='tumbnail' src={item.image} alt='product' />
-                            <div>
-                                <h4>{item.title}</h4>
-                                <p>{item.price}:-</p>
-                            </div>
-                            <div className='quantity-trash-wrapper'>
-                                <div className='quantity-wrapper'>
-                                    <button onClick={() => DecreaseQuantity(item)} className='arrow-btn'>
-                                        <FaAngleLeft />
-                                    </button>
-                                    <p>{item.quantity}</p>
-                                    <button onClick={() => IncreaseQuantity(item)} className='arrow-btn'>
-                                        <FaAngleRight />
-                                    </button>
+                        return <>
+                            <div className='cart-wrapper'>
+                                <div className='pic-holder'>
+                                    <img className='tumbnail' src={item.image} alt='product' />
                                 </div>
-                                <button className='icon' onClick={() => RemoveItem(item)}>
-                                    <FaTrashAlt />
-                                </button>
+                                <div className='title'>
+                                    <h4>{item.title.substring(0, 30) + '...'}</h4>
+                                    <p>{item.price}:-</p>
+                                    <div className='quantity-trash-wrapper'>
+                                        <div className='quantity-wrapper'>
+                                            <button onClick={() => DecreaseQuantity(item)} className='arrow-btn'>
+                                                <FaAngleLeft />
+                                            </button>
+                                            <p>{item.quantity}</p>
+                                            <button onClick={() => IncreaseQuantity(item)} className='arrow-btn'>
+                                                <FaAngleRight />
+                                            </button>
+                                            <button className='icon' onClick={() => RemoveItem(item)}>
+                                                <FaTrashAlt />
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
+                            <div className='line'></div>
+                        </>
                     })}
                 {cartSum !== 0
                     ? <>
-                        <div className='line'></div>
                         <div className='price-wrapper'>
                             <p><b>Total</b></p>
                             <p>{cartSum.toFixed(2)}:-</p>
                         </div>
                         <div className='remove-checkout-wrapper'>
-                            <button className='empthy-cart-btn' onClick={() => RemoveAllItems()}>Remove all items</button>
+                            <button className='empthy-cart-btn' onClick={() => RemoveAllItems()}>Empthy cart</button>
                             <StyledLink to='/checkout'><b>Go to Checkout</b><FaArrowRight /></StyledLink>
                         </div>
                     </>
@@ -121,28 +125,45 @@ const StyledLink = styled(Link)`
 `
 
 const StyledCart = styled.div`
-    width: 30vw;
-    padding: 2vh;
     position: absolute;
+    top: 9vh;
     right: 0;
+    width: 20vw;
+    padding: 2vh;
     background-color: #2B3038;
     color: white;
 
-    .wrapper {
+    .cart-wrapper {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        gap: 2vh;
+        gap: 3vh;
+    }
+
+    .pic-holder {
+        background-color: white;
+    }
+
+    .tumbnail {
+        height: 6vw;
+        width: 6vw;
+        padding: 2px;
+        object-fit: contain;
+    }
+
+    .icon {
+        all: unset;
+        text-align: right;
+    }
+
+    .quantity-trash-wrapper {
+        text-align: center;
     }
 
     .quantity-wrapper {
         display: flex;
         align-items: center;
         gap: 1vw;
-    }
-
-    .quantity-trash-wrapper {
-        text-align: center;
     }
 
     .arrow-btn {
@@ -156,17 +177,10 @@ const StyledCart = styled.div`
 
     .line {
         height: 1px;
-        margin: 3vh;
+        width: 100%;
         background-color: white;
     }
-    .tumbnail {
-        height: 70px;
-        width: 70px;
-    }
-    .icon {
-        all: unset;
-        text-align: right;
-    }
+
     .empthy-cart-btn {
         all: unset;
         cursor: pointer;
