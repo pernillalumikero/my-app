@@ -6,7 +6,7 @@ import Logo from './Logo';
 const Banner = () => {
   return (
     <StyledDiv>
-      <p id='offer'>25% on your first order!</p>
+      <p id='offer'>25% off with code: newCustomer25</p>
       <Logo />
       <StyledDeliveryDiv>
         <FaTruck />
